@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+  {% if request.user.is_authenticated %}
+    <form action="">
+      <p>catefgoria</p>
+      <button>jugar</button>
+    </form>
+  {% else %}
+    <div class="row card-panel center">
+        <div class="col s12 m3">
+            <a href="{% url 'login' %}" class="waves-effect waves-light btn"><i class="material-icons left">person</i>Iniciar</a>
+        </div>
+        <div class="col s12 m3">
+            <a href="{%url 'register' %}" class="waves-effect waves-light btn"><i class="material-icons left">person_add</i>REgistrarse</a>
+        </div>        
+    </div>
+  {% endif %}
+{% endblock %}

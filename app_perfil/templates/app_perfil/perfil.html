@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+    <div class="card-panel">
+        <div class="row">
+            usuario: {{usuario.username}}
+
+        </div>
+        {% if request.user == usuario %}
+        <div class="row">
+            <a href="{% url 'edit_profile' %}" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">create</i></a>
+        </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

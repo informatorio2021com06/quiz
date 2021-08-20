@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+    <div class="card-panel">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row">
+            {% for field in form %}
+                <div class="col s12">
+                    {{field}}
+                    <label for="{{field.id_for_label}}">
+                        {{field.label}}
+                    </label>
+                </div>
+            {% endfor %}
+            </div>
+            {% if form.errors %}
+                <div class="row red-text center">
+                    Usuario o Contraseña Incorrectos
+                </div>
+            {% endif %}
+            <a id="mostrar-pass" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">remove_red_eye</i></a>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Ingresar
+              <i class="material-icons right">send</i>
+            </button>            
+        </form>
+    </div>
+    <script>
+        function mostrarPass(){
+            input_pass = document.getElementById("id_password")
+            if (input_pass.type === "password"){
+                input_pass.type = "text"
+            }
+            else{
+                input_pass.type = "password"
+            }
+        }
+        document.addEventListener("DOMContentLoaded", ()=>{
+            document.getElementById("mostrar-pass").addEventListener("click", mostrarPass)
+        })
+    </script>
+{% endblock %}
