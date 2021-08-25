@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+    <div class="row">
+        {{ pregunta.consigna }}
+    </div>
+    <div class="row">
+        <ul>
+
+            {% for opcion in pregunta.opciones.all %}
+                <li>
+                    {{opcion.valor}}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="row">
+        {{pregunta.correcto.valor }}
+    </div>
+{% endblock %}

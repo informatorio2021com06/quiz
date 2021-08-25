@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+    <div class="row">
+        {{ cat.nombre }}
+    </div>
+    <div class="row">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <p>Borrar categoria: {{cat.nombre}}</p>
+            <input type="submit" value="Borrar">
+        </form>
+    </div>
+{% endblock %}
