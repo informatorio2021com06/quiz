@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+    <form action="" class="card-panel" method="POST">
+        {% csrf_token %}
+        <h3>{{pregunta.consigna}}</h3>
+        {{form}}
+        <button type="submit">Contestar</button>
+    </form>
+{% endblock %}

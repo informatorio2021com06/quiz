@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+    <div class="row">
+        {{ juego.id }}
+    </div>
+    <div class="row">
+        Participante: {{juego.participante.username}}
+    </div>
+    <div>
+        Correctas: {{ juego.cant_correctas }}
+    </div>
+    <div class="row">
+        Incorrectas: {{ juego.cant_incorrectas }}
+    </div>
+    <ul>
+        {% for detalle in juego.detalle_respuestas.all %}
+            <li>
+                {{detalle.pregunta.consigna}} - {{detalle.estado}}
+            </li>
+        {% endfor %}
+
+    </ul>
+{% endblock %}

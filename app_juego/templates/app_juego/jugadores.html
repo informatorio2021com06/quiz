@@ -1,0 +1,7 @@
+<ul>
+    {% for perfil in perfiles %}
+        <li>
+            {{perfil.username}} - {{perfil.last_login}} - {{perfil.date_joined}}
+        </li>
+    {% endfor %}
+</ul>

@@ -3,9 +3,17 @@
 {% block contenido %}
 
   {% if request.user.is_authenticated %}
-    <form action="">
-      <p>catefgoria</p>
-      <button>jugar</button>
+    <form action="{% url 'empezar_partida' %}" method="POST">
+      {% csrf_token %}
+      <div class="row">
+        {{form}}
+      </div>
+      <div class="row">
+        <button class="btn waves-effect waves-light" type="submit" name="action">
+          Jugar
+          <i class="material-icons right">send</i>
+      </button>        
+      </div>
     </form>
   {% else %}
     <div class="row card-panel center">
@@ -17,4 +25,7 @@
         </div>        
     </div>
   {% endif %}
+  <div class="row">
+    <a href="https://api.whatsapp.com/send?phone=12345678&text=asdfghjk">enviar</a>
+  </div>
 {% endblock %}

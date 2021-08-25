@@ -1,0 +1,30 @@
+<div>
+    {{juego.id}} - {{juego.categoria.nombre}}
+</div>
+<div>
+    participante: {{juego.participante.username}}
+</div>
+<div>
+    {% for preg in juego.preguntas.all %}
+        <div>
+            {{preg.consigna}}
+        </div>
+        <div>
+            {{preg.correcto.valor}}
+        </div>
+        <div>
+            <h2>respuestas</h2>
+            {% for resp in preg.opciones.all %}
+                {{resp.valor}}
+            {% endfor%}
+            <h2>fin respuestas</h2>
+        </div>
+
+    {% endfor %}
+
+    <div>
+        {% for detalle in juego.detalle_respuestas.all %}
+            {{detalle.pregunta.consigna }} -{{detalle.estado}}
+        {% endfor %}
+    </div>
+</div>
