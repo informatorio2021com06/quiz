@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load social_share %}
 
 {% block contenido %}
     <div class="row">
@@ -21,4 +22,9 @@
         {% endfor %}
 
     </ul>
+    <div class="row">
+        {% post_to_facebook request.build_absolute_uri "Compartir en Face" %}
+        {% post_to_linkedin request.build_absolute_uri %}
+        {% post_to_whatsapp request.build_absolute_uri "Compartir en WhatsApp" %}
+    </div>
 {% endblock %}
