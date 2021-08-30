@@ -24,12 +24,16 @@ def empezar_partida(request):
     print("\n\ndespues de crear form")
 
     if form.is_valid():
-        juego = form.save(commit=False)
-        juego.participante = request.user
-        juego.save()
-        preguntas = Pregunta.objects.filter(categoria = juego.categoria ).order_by("?")[:5]
-        for preg in preguntas:
-            juego.detalle_respuestas.create(pregunta = preg, estado = JuegoPregunta.ESTADO_CHOICES[0])
+        try:
+            juego = form.save(commit=False)
+            juego.participante = request.user
+            juego.save()
+            preguntas = Pregunta.objects.filter(categoria = juego.categoria ).order_by("?")[:5]
+            for preg in preguntas:
+                juego.detalle_respuestas.create(pregunta = preg, estado = JuegoPregunta.ESTADO_CHOICES[0])
+        except Exception as ex:
+            print(ex)
+            return redirect("inicio")
         return redirect("jugar", juego.id)
     else:
         print("form no válido.")
