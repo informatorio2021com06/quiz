@@ -19,9 +19,9 @@ def inicio(request):
 def empezar_partida(request):
     if not request.method == "POST":
         return redirect("inicio")
-
+    print("\n\ncrear form")
     form = CrearJuegoForm(request.POST)
-    print("\n\n")
+    print("\n\ndespues de crear form")
 
     if form.is_valid():
         juego = form.save(commit=False)
