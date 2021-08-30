@@ -21,6 +21,8 @@ def empezar_partida(request):
         return redirect("inicio")
 
     form = CrearJuegoForm(request.POST)
+    print("\n\n")
+
     if form.is_valid():
         juego = form.save(commit=False)
         juego.participante = request.user
@@ -29,6 +31,9 @@ def empezar_partida(request):
         for preg in preguntas:
             juego.detalle_respuestas.create(pregunta = preg, estado = JuegoPregunta.ESTADO_CHOICES[0])
         return redirect("jugar", juego.id)
+    else:
+        print("form no válido.")
+        return redirect("inicio")
 
 def test_juego(request, id):
     juego = Juego.objects.get(pk=id)
