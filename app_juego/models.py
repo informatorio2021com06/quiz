@@ -23,4 +23,4 @@ class JuegoPregunta(models.Model):
         ("incorrect", "Incorrecto"),
         ('ended', "Finalizado")
     )
-    estado = models.CharField(max_length=15, choices=ESTADO_CHOICES, null=False, default="in_progress")
+    estado = models.CharField(max_length=30, choices=ESTADO_CHOICES, null=False, default="in_progress")
