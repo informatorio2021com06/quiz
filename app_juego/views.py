@@ -33,6 +33,7 @@ def empezar_partida(request):
         return redirect("jugar", juego.id)
     else:
         print("form no válido.")
+        print(form.errors)
         return redirect("inicio")
 
 def test_juego(request, id):
